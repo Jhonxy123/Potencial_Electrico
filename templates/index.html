@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Potencial Eléctrico de una Esfera</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Calculadora de Potencial Eléctrico</h1>
+    <form method="POST">
+        <label for="R">Radio de la esfera (R):</label>
+        <input type="text" name="R" required>
+        <select name="unidad_R">
+            <option value="m">Metros</option>
+            <option value="cm">Centímetros</option>
+        </select><br><br>
+
+        <label for="r">Distancia desde el centro (r):</label>
+        <input type="text" name="r" required>
+        <select name="unidad_r">
+            <option value="m">Metros</option>
+            <option value="cm">Centímetros</option>
+        </select><br><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if resultado %}
+        {% if resultado.error %}
+            <p style="color: red;">{{ resultado.error }}</p>
+        {% else %}
+            <h2>Resultado:</h2>
+            <p>Radio (R): {{ resultado.R }} m</p>
+            <p>Distancia (r): {{ resultado.r }} m</p>
+            <p>Estás {{ resultado.caso }}.</p>
+            <p><strong>Potencial eléctrico:</strong> {{ resultado.V }} V</p>
+        {% endif %}
+    {% endif %}
+</body>
+<footer>
+    <p>Hecho por: Jhon González & Dianne González © 2025</p>
+</footer>
+</html>
